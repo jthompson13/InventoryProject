@@ -1,11 +1,68 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include("./includes/header.ejs", {title:"Inventory Project"}); %>
+
+<div class="entryPage" ng-controller="indexController">
+    <div class="row pageHeader">
+        <h3> Data Center: Current Status</h3>
+        <div id="countDiv">
+            Current Count:
+            <input ng-model="inventoryCount" type="text" style="width: 100px" readonly="readonly" />
+            <button class="btn btn-warning btn-sm" ng-click="clear()">Clear Filter</button>
+        </div>
+    </div>
+    <div class="row eTable">
+        <div class="indexTable">
+            <table style="height: inherit" class="table table-condensed table-striped table-responsive header-fixed" id="EntryTable">
+                <thead>
+                    <tr>
+                        <th style="display: none">Device Key</th>
+                        <th class="col-lg-4" style="padding-left: 25px">
+                            <a href="#" ng-click="sortType = 'dns_name'; sortReverse = !sortReverse">
+                                Server
+                                <span ng-show="sortType == 'dns_name' && !sortReverse" class="fa fa-caret-down"></span>
+                                <span ng-show="sortType == 'dns_name' && sortReverse" class="fa fa-caret-up"></span>
+                            </a>
+                        </th>
+                        <th class="col-lg-4">
+                            <a href="#" ng-click="sortType = 'serial_number'; sortReverse = !sortReverse">
+                                Serial Number
+                                <span ng-show="sortType == 'serial_number' && !sortReverse" class="fa fa-caret-down"></span>
+                                <span ng-show="sortType == 'serial_number' && sortReverse" class="fa fa-caret-up"></span>
+                            </a>
+                        </th>
+                        <th class="col-lg-4">
+                            <a href="#" ng-click="sortType = 'current_status'; sortReverse = !sortReverse">
+                                Status
+                                <span ng-show="sortType == 'current_status' && !sortReverse" class="fa fa-caret-down"></span>
+                                <span ng-show="sortType == 'current_status' && sortReverse" class="fa fa-caret-up"></span>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat=" s in servers | orderBy:sortType:sortReverse | filter:searchFilter | filter:statusFilter" class="rowInfo">
+                        <td class="DeviceKey" style="display: none">
+                            <span class="DeviceKey2">{{s.device_key}} </span>
+                        </td>
+                        <td class="ServerName col-lg-4 col-md-4">
+                            {{s.dns_name}}
+                        </td>
+                        <td class="SerialNumber col-lg-4 col-md-4">
+                            {{s.serial_number}}
+                        </td>
+                        <td class="Status col-lg-4 col-md-4">
+                            <div class="btn-group">
+                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">{{s.current_status}} <span class="caret"></span></a>
+                                <ul class="stat dropdown-menu">
+                                    <li><a href="#">Good</a></li>
+                                    <li><a href="#">Down</a></li>
+                                    <li><a href="#">In Service</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include("./includes/footer.ejs"); %>

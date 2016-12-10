@@ -1,0 +1,22 @@
+
+<div class="serverScan_table">
+    <table class=" table table-condensed table-responsive table-striped table-sm table-bordered header-fixed" id="racTable">
+        <thead>
+        <tr>
+            <th style="display: none">Device Key</th>
+            <th>Server</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="racklist" ng-repeat="r in runInventory">
+            <td class="SerialNumber" style="display: none">
+                <span class="SerialNumber2">{{r.device_key}} </span>
+            </td>
+            <td class="icons">
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                {{r.dns_name}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

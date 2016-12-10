@@ -1,8 +1,248 @@
 body {
-  padding: 50px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  min-width: 1200px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+/* Set padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
+*/
+.dl-horizontal dt {
+  white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+  max-width: 280px;
+}
+
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr,
+.header-fixed > tbody > tr,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+  display: block;
+}
+
+.header-fixed > tbody > tr:after,
+.header-fixed > thead > tr:after {
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+.header-fixed > tbody {
+  overflow-y: auto;
+  height: 400px;
+}
+
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+  width: 25%;
+  float: left;
+}
+
+#LogTable > tbody > tr > td
+{
+  width: 20%;
+  text-align: left;
+  float: left;
+  padding-left: 15px
+}
+
+#LogTable > thead > tr > th {
+  width: 20%;
+  text-align: left;
+  float: left;
+}
+
+.table-responsive {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}
+
+div.btn-group {
+  white-space: nowrap;
+}
+
+.btn-group .btn {
+  float: none;
+  display: inline-block;
+}
+
+.btn + .dropdown-toggle {
+  margin-left: -4px;
+}
+
+.input-group {
+  width: 205px;
+  padding-right: 10px;
+}
+
+.modal {
+  display: block;
+}
+
+.indexTable {
+  padding-top: 20px;
+}
+
+div.pageHeader {
+  text-align: center;
+}
+
+div.entryPage > .pageHeader {
+  padding-top: 20px;
+}
+
+div.pageHeader > #countDiv > button {
+  margin-right: -10px;
+  margin-left: 5px;
+  margin-top: -4px
+}
+
+
+div.pageHeader > #countDiv,
+div.pageHeader > #scanDiv,
+div.pageHeader > #searchDiv > #dateForm {
+  font-size: 15px;
+  padding-right: 10px;
+  float: left;
+  padding-top: 5px
+}
+
+div.pageHeader > #countDiv > input,
+div.pageHeader > #scanDiv > input,
+div.pageHeader > #searchDiv > button {
+  float: none;
+  padding-left: 5px;
+}
+
+div.pageHeader > #countDiv,
+div.pageHeader > #scanDiv,
+div.pageHeader > #searchDiv {
+  float: right;
+}
+
+div.pageHeader > h3 {
+  text-align: center;
+  display: inline;
+  padding-left: 75px;
+}
+
+div.insertarea {
+  float: right;
+}
+
+input[type="text"].style-1 {
+  padding: 5px;
+  width: 200px;
+  margin-left: 5px;
+  border: solid 1px #dcdcdc;
+  -moz-transition: box-shadow 0.3s, border 0.3s;
+  -o-transition: box-shadow 0.3s, border 0.3s;
+  -webkit-transition: box-shadow 0.3s, border 0.3s;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+input[type="text"].style-1:focus {
+  border: solid 1px aqua;
+  box-shadow: 0 0 5px 1px aquamarine;
+}
+
+span.glyphicon {
+  float: left;
+}
+
+div.serverScan_table,
+div.complete_table {
+  margin-top: 1em;
+  padding-left: 10em;
+
+}
+
+div.serverScan_table > table,
+div.complete_table > table {
+  border: 2px solid rebeccapurple;
+  width: 20em;
+}
+
+div.serverScan_table > table > thead,
+div.complete_table > table > thead {
+  border-bottom: 2px groove cadetblue;
+}
+
+
+div.serverScan_table > table > thead > tr > th,
+div.serverScan_table > table > tbody > tr > td,
+div.complete_table > table > thead > tr > th,
+div.complete_table > table > tbody > tr > td {
+  width: 20em;
+  text-align: center;
+}
+
+
+div.serverScan_table > table.table-striped > tbody > tr:nth-child(even) > td {
+  background-color: #b8d1f3;
+}
+div.serverScan_table > table.table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #dae5f4;
+}
+
+div.complete_table > table.table-striped > tbody > tr:nth-child(even) > td {
+  background-color: #b8d1f3;
+}
+div.complete_table > table.table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #dae5f4;
+}
+
+div.indexTable > table {
+  border: 1px solid black;
+}
+
+div.indexTable > table > thead > tr {
+  border: 1px solid black;
+}
+
+div.indexTable > table > thead > tr > th {
+  margin-top: 15px;
+  padding-top: 5px;
+}
+
+div.indexTable > table.table-striped > tbody > tr > td{
+  font-size: 15px;
+  vertical-align: middle;
+  padding-left: 15px;
+}
+
+div.indexTable > table.table-striped > tbody > tr:nth-child(even) > td {
+  background-color: #b8d1f3;
+}
+div.indexTable > table.table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #dae5f4;
+}
+
+div.indexTable > table.table-striped > tbody > tr:nth-child(even) {
+  background-color: #b8d1f3;
+}
+div.indexTable > table.table-striped > tbody > tr:nth-child(odd) {
+  background-color: #dae5f4;
+}
+
+div.logTable > table.table-striped > tbody > tr:nth-child(even) {
+  background-color: #b8d1f3;
+}
+div.logTable > table.table-striped > tbody > tr:nth-child(odd) {
+  background-color: #dae5f4;
 }

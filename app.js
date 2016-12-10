@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var inventory = require('./routes/inventory_routes');
+var logs =  require('./routes/log_routes');
 var users = require('./routes/users');
 
 var app = express();
@@ -20,10 +22,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/font-awesome', express.static(path.join(__dirname, '/font-awesome')));
+app.use('/font-awesome-icons', express.static(path.join(__dirname, '/font-awesome-icons')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/logs', logs);
+app.use('/inventory', inventory);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

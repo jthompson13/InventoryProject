@@ -1,0 +1,77 @@
+<%- include("../includes/header.ejs", {title:"Inventory Logs"}); %>
+
+<div ng-controller="logController" class="row lTable" style="width: 100%; padding-top: 10px">
+
+    <div class="row">
+        <div class="pageHeader">
+            <h3>Data Center: Inventory Logs</h3>
+            <div id="searchDiv">
+                <form id="dateForm" class="custom-select">
+                    Select A Date:
+                    <select ng-model="selectedDate" ng-change="filter()">
+                        <option ng-repeat="d in dates">{{d}}</option>
+                    </select>
+                </form>
+                <button class="btn btn-warning btn-sm" ng-click="clear()">Clear Filter</button>
+            </div>
+        </div>
+    </div>
+    <div class="row logTable">
+        <table class="table table-condensed table-striped table-responsive header-fixed" id="LogTable">
+            <thead>
+            <tr>
+                <th style="display: none">Device Key</th>
+                <th class="col-lg-3">
+                    <a href="#" ng-click="sortType = 'dns_name'; sortReverse = !sortReverse">
+                        Server
+                        <span ng-show="sortType == 'dns_name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'dns_name' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th class="col-lg-5">
+                    <a href="#" ng-click="sortType = 'date_checked'; sortReverse = !sortReverse">
+                        Server
+                        <span ng-show="sortType == 'date_checked' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'date_checked' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th class="col-lg-2">
+                    <a href="#" ng-click="sortType = 'serial_number'; sortReverse = !sortReverse">
+                        Serial Number
+                        <span ng-show="sortType == 'serial_number' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'serial_number' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th class="col-lg-2">
+                    <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse">
+                        Status
+                        <span ng-show="sortType == 'status' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'status' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="i in logs | orderBy:sortType:sortReverse | filter:searchFilter | filter:statusFilter | filter:selectedDate" class="rowInfo">
+                <td class="DeviceKey" style="display: none">
+                    <span class="DeviceKey2">{{i.device_key}} </span>
+                </td>
+                <td class="ServerName col-lg-3">
+                    {{i.dns_name}}
+                </td>
+                <td class="Date col-lg-5">
+                    {{i.date_checked}}
+                </td>
+                <td class="SerialNumber col-lg-2">
+                    {{i.serial_number}}
+                </td>
+                <td class="Status col-lg-2">
+                    {{i.status}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include("../includes/footer.ejs"); %>
