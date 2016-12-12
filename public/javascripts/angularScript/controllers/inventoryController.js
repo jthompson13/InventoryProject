@@ -37,9 +37,6 @@
             $scope.item = "";
         }
 
-
-
-
         $scope.applyEntry = function ($event) {
             if ($event !== "") {
                 serverService.addServerToInventory($event)

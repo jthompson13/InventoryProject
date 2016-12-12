@@ -15,26 +15,31 @@
                 <thead>
                     <tr>
                         <th style="display: none">Device Key</th>
-                        <th class="col-lg-4" style="padding-left: 25px">
+                        <th class="col-lg-3" style="padding-left: 25px">
                             <a href="#" ng-click="sortType = 'dns_name'; sortReverse = !sortReverse">
                                 Server
                                 <span ng-show="sortType == 'dns_name' && !sortReverse" class="fa fa-caret-down"></span>
                                 <span ng-show="sortType == 'dns_name' && sortReverse" class="fa fa-caret-up"></span>
                             </a>
                         </th>
-                        <th class="col-lg-4">
+                        <th class="col-lg-3">
                             <a href="#" ng-click="sortType = 'serial_number'; sortReverse = !sortReverse">
                                 Serial Number
                                 <span ng-show="sortType == 'serial_number' && !sortReverse" class="fa fa-caret-down"></span>
                                 <span ng-show="sortType == 'serial_number' && sortReverse" class="fa fa-caret-up"></span>
                             </a>
                         </th>
-                        <th class="col-lg-4">
+                        <th class="col-lg-3" style="padding-left: 2em;">
                             <a href="#" ng-click="sortType = 'current_status'; sortReverse = !sortReverse">
                                 Status
                                 <span ng-show="sortType == 'current_status' && !sortReverse" class="fa fa-caret-down"></span>
                                 <span ng-show="sortType == 'current_status' && sortReverse" class="fa fa-caret-up"></span>
                             </a>
+                        </th>
+                        <th class="col-lg-2" style="padding-left: 1em; padding-right: 2em;">
+                            Alter
+                            <i class="fa fa-plus" ng-click="add()" style="display: inline; float: right;"></i>
+
                         </th>
                     </tr>
                 </thead>
@@ -43,13 +48,13 @@
                         <td class="DeviceKey" style="display: none">
                             <span class="DeviceKey2">{{s.device_key}} </span>
                         </td>
-                        <td class="ServerName col-lg-4 col-md-4">
+                        <td class="ServerName col-lg-3 col-md-3">
                             {{s.dns_name}}
                         </td>
-                        <td class="SerialNumber col-lg-4 col-md-4">
+                        <td class="SerialNumber col-lg-3 col-md-3">
                             {{s.serial_number}}
                         </td>
-                        <td class="Status col-lg-4 col-md-4">
+                        <td class="Status col-lg-3 col-md-3">
                             <div class="btn-group">
                                 <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">{{s.current_status}} <span class="caret"></span></a>
                                 <ul class="stat dropdown-menu">
@@ -59,10 +64,19 @@
                                 </ul>
                             </div>
                         </td>
+                        <td class="server_buttons">
+                            <a href="#" id="delete" ng-click="delete(s)"><span class="fa fa-minus" ></span></a>
+                            <a href="#" id="edit" ng-click="edit(s.device_key)"><span class="fa fa-edit" style=" margin-left: 1em;display: inline"></span></a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+
+<!-- TRY  USING TEMPLATE REQUES WITH OTHER VERSION -->
+<%- include("./includes/delete_modal.html"); %>
+
 <%- include("./includes/footer.ejs"); %>

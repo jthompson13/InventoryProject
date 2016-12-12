@@ -3,12 +3,14 @@
  */
 
 (function() {
+    'use strict';
+
     angular.module('inventoryApp')
         .controller('indexController', indexController);
 
-    indexController.$inject = ['$scope', 'serverService', 'watches', 'pubsubService'];
+    indexController.$inject = ['$scope', 'serverService', 'watches', '$uibModal', 'pubsubService'];
 
-    function indexController($scope, serverService, watches, pubsubService) {
+    function indexController($scope, serverService, watches, $uibModal, pubsubService) {
         $scope.sortType = "device_key";
         $scope.sortReverse = false;
         $scope.searchFilter = "";
@@ -33,6 +35,29 @@
                 });
         }
 
+        function deleteServer(server) {
+            serverService.deleteServer(server)
+                .then(function (res) {
+                    if(res) {
+                        setServers();
+                    }
+                });
+        }
+
+
+        $scope.add = function () {
+
+        };
+
+        $scope.delete = function (device) {
+            displayModal_delete(device);
+        };
+
+        $scope.edit = function () {
+
+        };
+
+
         $scope.clear = function () {
             $scope.searchFilter = "";
             $scope.statusFilter = "";
@@ -56,6 +81,34 @@
             $scope.searchFilter = message.filter;
             $scope.statusFilter = message.status;
         });
+
+
+        var displayModal_delete = function (device) {
+
+            try {
+                $scope.modalInstance = $uibModal.open({
+                    templateUrl: "delete_modal.html",
+                    controller: "delete_modalController",
+                    size: "lg",
+                    backdrop: false,
+                    resolve: {
+                        items: function () {
+                            return {
+                                title: "Confirm Delete",
+                                device: device
+                            }
+                        }
+                    }
+                }).result.then(function (x) {
+                    if(x){
+                        deleteServer(x);
+                    }
+                });
+
+            } catch (e) {
+                console.log(e)
+            }
+        }
     }
 
 })();

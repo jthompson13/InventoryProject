@@ -1,1 +1,1 @@
-angular.module('inventoryApp', []);
+angular.module('inventoryApp', ['ngAnimate', 'ui.bootstrap']);

@@ -1,15 +1,18 @@
 <%- include("../includes/header.ejs", {title:"Inventory Project"}); %>
 
-<div class="row" id="" ng-controller="inventoryController" style="width: 100%; padding-top: 10px">
-    <div class="row pageHeader">
+<div class="row" id="" ng-controller="inventoryController" style="width: 100%; padding-top: 10px; margin-top: 1em;">
+    <div class="row pageHeader" style="margin-left: 3em;">
         <h3> Data Center: Process Inventory</h3>
         <div id="scanDiv">
             Input Valid Serial Number:
             <input class="style-1" ng-keypress="($event.which === 13)?applyEntry(item):0" id="input" type="text" ng-model="item" />
         </div>
     </div>
-    <div class="col-lg-12 col-md-12 col-lg-12" style="width: 50%">
+    <div class="col-lg-10 col-md-10 col-lg-10" style="width: 50%">
          <%- include("./inventory_table.ejs"); %>
+    </div>
+    <div class="col-lg-2 col-md-2 col-lg-2">
+
     </div>
 </div>
 

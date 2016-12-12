@@ -31,3 +31,12 @@ exports.getServerInfo = function(server, callback) {
         callback(err, result[0]);
     });
 };
+
+exports.deleteServer = function(device_key, callback){
+    var query =  'DELETE FROM server WHERE device_key = ? ';
+    var queryData = [device_key];
+
+    connection.query(query, queryData, function (err, result) {
+        callback(err, result);
+    })
+};

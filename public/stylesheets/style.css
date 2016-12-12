@@ -176,6 +176,9 @@ div.serverScan_table > table,
 div.complete_table > table {
   border: 2px solid rebeccapurple;
   width: 20em;
+  align-content: center;
+    margin-left: 10em;
+    margin-top: 5em;
 }
 
 div.serverScan_table > table > thead,
@@ -218,6 +221,7 @@ div.indexTable > table > thead > tr {
 div.indexTable > table > thead > tr > th {
   margin-top: 15px;
   padding-top: 5px;
+    padding-bottom: 1em;
 }
 
 div.indexTable > table.table-striped > tbody > tr > td{
@@ -245,4 +249,24 @@ div.logTable > table.table-striped > tbody > tr:nth-child(even) {
 }
 div.logTable > table.table-striped > tbody > tr:nth-child(odd) {
   background-color: #dae5f4;
+}
+
+
+
+.fa-plus{
+    color: lawngreen;
+}
+
+.fa-minus{
+    color: red;
+}
+
+.fa-edit{
+    color: purple;
+}
+
+.fa:hover {
+    cursor: pointer;
+    color: cadetblue;
+    font-size: 10px;
 }

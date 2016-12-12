@@ -24,8 +24,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/font-awesome', express.static(path.join(__dirname, '/font-awesome')));
-app.use('/font-awesome-icons', express.static(path.join(__dirname, '/font-awesome-icons')));
+app.use('/font-awesome', express.static(path.join(__dirname, 'node_modules/font-awesome')));
+app.use('/font-awesome-icons', express.static(path.join(__dirname, 'node_modules/font-awesome-icons')));
+app.use('/angular-ui', express.static(path.join(__dirname, 'node_modules/angular-ui--bootstrap')));
 
 app.use('/', index);
 app.use('/users', users);

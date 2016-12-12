@@ -10,7 +10,9 @@
 
             getServerCount: getServerCount,
 
-            addServerToInventory: addServerToInventory
+            addServerToInventory: addServerToInventory,
+
+            deleteServer: deleteServer
         };
 
         function getServers() {
@@ -27,7 +29,14 @@
                 method: "GET",
                 params: { serial_number: server }
             });
+        }
 
+        function deleteServer(server) {
+            return $http({
+                url:'/delete',
+                method: "GET",
+                params: { device_key: server.device_key }
+            });
         }
 
     }

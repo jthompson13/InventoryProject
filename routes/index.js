@@ -20,4 +20,16 @@ router.get('/serverCount', function(req, res, next) {
   });
 });
 
+router.get('/delete', function(req, res) {
+  server_dal.deleteServer(req.query.device_key, function (err, result) {
+    if(err){
+      console.log(err);
+      return res.json({result: false});
+    }
+
+    return res.json({result: true});
+
+  });
+});
+
 module.exports = router;
