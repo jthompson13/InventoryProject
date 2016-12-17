@@ -268,5 +268,5 @@ div.logTable > table.table-striped > tbody > tr:nth-child(odd) {
 .fa:hover {
     cursor: pointer;
     color: cadetblue;
-    font-size: 10px;
+    font-size: 20px;
 }

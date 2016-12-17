@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var server_dal = require('../model/server_dal');
+var vendor_dal = require('../model/vendor_dal');
+var warranty_dal = require('../model/warranty_dal');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Inventory Project' });
@@ -29,6 +31,34 @@ router.get('/delete', function(req, res) {
 
     return res.json({result: true});
 
+  });
+});
+
+
+router.get('/getVendors', function (req, res) {
+  vendor_dal.getVendors(function (err, result) {
+    return res.json(result);
+  });
+});
+
+router.get('/newServer', function (req, res) {
+  var data = req.query;
+  server_dal.addServer(data, function(err, result) {
+    if(!err) {
+      var warranty = {device_key: result.insertId, vendor_id: data.vendor_id};
+      var key = result.insertId;
+      warranty_dal.addWarranty(warranty, function (err, result2) {
+      if(!err){
+        var data2 = {device_key: key, policy_id: result2.insertId, start_date: data.start_date, end_date: data.end_date};
+        warranty_dal.addServer_Warranty(data2, function (err, result3) {
+          return res.json({'result': "complete"});
+        });
+      }
+
+      });
+
+
+    }
   });
 });
 

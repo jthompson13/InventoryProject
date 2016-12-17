@@ -1,0 +1,29 @@
+<script type="text/ng-template" id="add_modal.html">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="close()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" ng-modal="title">{{title}}</h4>
+    </div>
+    <div class="modal-body">
+        <form name="add_server">
+            <span>Server Name (dns): <input type="text" id="name" /></span>
+            <span>Serial Number: <input type="text" id="serial"/></span>
+            <span>Status: <input type="text"  id="status" /></span>
+            <span>Operating System: <input type="text"  id="os" /></span>
+            <span>Date Deployed: <input type="text"id="deployed" /></span>
+            <span>Warranty Start Date: <input type="text" id="start" /></span>
+            <span>Warranty End Date: <input type="text" id="end" /></span>
+           Select A Vendor :
+            <select id="vendor" >
+                <option ng-repeat="v in vendors" value="{{v.vendor_id}}">{{v.name}}</option>
+            </select>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" ng-click="accept_add()" class="btn btn-danger" data-dismiss="modal">Confirm</button>
+        <button type="button" ng-click="close()" class="btn btn-primary" data-dismiss="modal">Close</button>
+    </div>
+
+</script>

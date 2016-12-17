@@ -12,7 +12,11 @@
 
             addServerToInventory: addServerToInventory,
 
-            deleteServer: deleteServer
+            deleteServer: deleteServer,
+
+            getVendors: getVendors,
+
+            addNewServer: addNewServer
         };
 
         function getServers() {
@@ -38,6 +42,19 @@
                 params: { device_key: server.device_key }
             });
         }
+
+        function getVendors() {
+            return $http.get('/getVendors');
+        }
+
+        function addNewServer(newServer) {
+            return $http({
+                url: '/newServer',
+                method: 'GET',
+                params: newServer
+            });
+        }
+
 
     }
 

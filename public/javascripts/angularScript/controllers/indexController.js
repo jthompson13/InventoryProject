@@ -35,6 +35,14 @@
                 });
         }
 
+        function getVendors() {
+            serverService.getVendors()
+                .then(function (response) {
+                    var vendors = response.data;
+                    displayModal_add(vendors);
+                });
+        }
+
         function deleteServer(server) {
             serverService.deleteServer(server)
                 .then(function (res) {
@@ -44,9 +52,18 @@
                 });
         }
 
+        function addServer(server) {
+            serverService.addNewServer(server)
+                .then(function (res) {
+                    if(res) {
+                        setServers();
+                    }
+                });
+        }
+
 
         $scope.add = function () {
-
+           getVendors(); // this will then display the modal
         };
 
         $scope.delete = function (device) {
@@ -108,7 +125,35 @@
             } catch (e) {
                 console.log(e)
             }
-        }
+        };
+
+
+        var displayModal_add = function (vendors) {
+
+            try {
+                $scope.modalInstance = $uibModal.open({
+                    templateUrl: "add_modal.html",
+                    controller: "add_modalController",
+                    size: "lg",
+                    backdrop: false,
+                    resolve: {
+                        items: function () {
+                            return {
+                                title: "Add Server",
+                                vendors: vendors
+                            }
+                        }
+                    }
+                }).result.then(function (x) {
+                    if(x){
+                        addServer(x);
+                    }
+                });
+
+            } catch (e) {
+                console.log(e)
+            }
+        };
     }
 
 })();

@@ -40,3 +40,15 @@ exports.deleteServer = function(device_key, callback){
         callback(err, result);
     })
 };
+
+exports.addServer = function(newServer, callback) {
+    var query = "INSERT INTO server (dns_name, serial_number, current_status, OS, date_deployed, vendor_id ) values( ?, ?, ?, ?, ?, ? )";
+
+    var queryData = [newServer.dns_name, newServer.serial_number, newServer.current_status, newServer.OS,
+        newServer.date_deployed,
+        newServer.vendor_id];
+
+    connection.query(query, queryData, function (err, result) {
+        callback(err, result);
+    })
+};
