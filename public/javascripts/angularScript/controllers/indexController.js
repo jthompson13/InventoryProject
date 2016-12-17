@@ -70,9 +70,12 @@
             displayModal_delete(device);
         };
 
-        $scope.edit = function () {
-
+        $scope.viewServer = function(key) {
+            serverService.viewServer(key).then( function (server) {
+                displayModal_server(server.data);
+            })
         };
+
 
 
         $scope.clear = function () {
@@ -147,6 +150,30 @@
                 }).result.then(function (x) {
                     if(x){
                         addServer(x);
+                    }
+                });
+
+            } catch (e) {
+                console.log(e)
+            }
+        };
+
+
+        var displayModal_server = function (server) {
+
+            try {
+                $scope.modalInstance = $uibModal.open({
+                    templateUrl: "server_modal.html",
+                    controller: "server_modalController",
+                    size: "lg",
+                    backdrop: false,
+                    resolve: {
+                        items: function () {
+                            return {
+                                title: "View Server",
+                                Server: server
+                            }
+                        }
                     }
                 });
 

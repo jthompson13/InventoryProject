@@ -22,6 +22,12 @@ router.get('/serverCount', function(req, res, next) {
   });
 });
 
+router.get('/UpdateStatus', function (req, res) {
+    server_dal.updateStatus(req.query, function(err, result) {
+
+    });
+});
+
 router.get('/delete', function(req, res) {
   server_dal.deleteServer(req.query.device_key, function (err, result) {
     if(err){
@@ -39,6 +45,12 @@ router.get('/getVendors', function (req, res) {
   vendor_dal.getVendors(function (err, result) {
     return res.json(result);
   });
+});
+
+router.get('/allServerInfo', function (req, res) {
+  server_dal.getAllServerInfo(req.query.device_key, function (err, result) {
+    return res.json(result[0][0]);
+  })
 });
 
 router.get('/newServer', function (req, res) {

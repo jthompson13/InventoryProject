@@ -11,3 +11,11 @@ exports.getLogs = function(callback) {
         callback(err, result);
     });
 };
+
+exports.getDates = function(callback) {
+    var query = 'SELECT DISTINCT date_checked FROM inventory;';
+
+    connection.query(query, function(err, result) {
+        callback(err, result);
+    });
+};

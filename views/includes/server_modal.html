@@ -1,0 +1,26 @@
+<script type="text/ng-template" id="server_modal.html">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="close()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" ng-modal="title">{{title}}</h4>
+    </div>
+    <div class="modal-body">
+            <span>Server Name (dns): {{s.dns_name}}</span> <br />
+            <span>Serial Number: {{s.serial_number}}</span> <br />
+            <span>Status: {{s.current_status}}</span> <br />
+            <span>Operating System: {{s.OS}}</span> <br />
+            <span>Date Deployed: {{s.date_deployed}}</span> <br />
+            <span>Warranty Start Date: {{s.start_date}}</span> <br />
+            <span>Warranty End Date: {{s.end_date}}</span> <br />
+            <span>Vendor Name: {{s.name}}</span> <br />
+            <span>Vendor Phone: {{s.phone_number}}</span> <br />
+            <span>Vendor State: {{s.state}}</span> <br />
+            <span>Vendor Zip Code: {{s.zip}}</span> <br />
+    </div>
+    <div class="modal-footer">
+        <button type="button" ng-click="close()" class="btn btn-primary" data-dismiss="modal">Close</button>
+    </div>
+
+</script>

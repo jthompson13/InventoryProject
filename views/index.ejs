@@ -37,7 +37,7 @@
                             </a>
                         </th>
                         <th class="col-lg-2" style="padding-left: 1em; padding-right: 2em;">
-                            Alter
+                            Delete
                             <i class="fa fa-plus" ng-click="add()" style="display: inline; float: right;"></i>
 
                         </th>
@@ -49,7 +49,7 @@
                             <span class="DeviceKey2">{{s.device_key}} </span>
                         </td>
                         <td class="ServerName col-lg-3 col-md-3">
-                            {{s.dns_name}}
+                           <a href="#" ng-click="viewServer(s.device_key)"> {{s.dns_name}} </a>
                         </td>
                         <td class="SerialNumber col-lg-3 col-md-3">
                             {{s.serial_number}}
@@ -66,7 +66,6 @@
                         </td>
                         <td class="server_buttons">
                             <a href="#" id="delete" ng-click="delete(s)"><span class="fa fa-minus" ></span></a>
-                            <a href="#" id="edit" ng-click="edit(s.device_key)"><span class="fa fa-edit" style=" margin-left: 1em;display: inline"></span></a>
                         </td>
                     </tr>
                 </tbody>
@@ -79,5 +78,8 @@
 <!-- TRY  USING TEMPLATE REQUES WITH OTHER VERSION -->
 <%- include("./includes/delete_modal.html"); %>
 <%- include("./includes/add_modal.html"); %>
+<%- include("./includes/server_modal.html"); %>
 
 <%- include("./includes/footer.ejs"); %>
+
+<script type="text/javascript" src="/javascripts/indexScript.js"></script>

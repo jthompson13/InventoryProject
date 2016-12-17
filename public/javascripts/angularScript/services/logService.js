@@ -7,15 +7,19 @@
     ]);
 
     function logService($http) {
-        var lService = {};
-        lService.getAllLogs = function () {
-            return $http.get("logs/../getAllLogs");
+        return {
+            getAllLogs: getAllLogs,
+            getAllDates: getAllDates
         };
 
-        lService.getAllDates = function () {
-            return $http.get("/getAllDates");
-        };
-        return lService;
+        function getAllLogs() {
+            return $http.get("logs/../getAllLogs");
+        }
+
+        function getAllDates() {
+            return $http.get("log/../getAllDates");
+        }
+ 
     }
 
 })();

@@ -14,4 +14,15 @@ router.get('/getAllLogs', function(req, res) {
     });
 });
 
+router.get('/getAllDates', function(req, res) {
+    log_dal.getDates(function(err, result){
+        // test = [result.size];
+        // var temp = result;
+        // for(var i = 0; i< result.length; i++){
+        //     test[i] = new Date(result[i]).toDateString();
+        // }
+        return res.json(result);
+    });
+});
+
 module.exports = router;

@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var inventory = require('./routes/inventory_routes');
 var logs =  require('./routes/log_routes');
 var users = require('./routes/users');
+var about = require('./routes/about_routes');
 
 var app = express();
 
@@ -27,11 +28,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/font-awesome', express.static(path.join(__dirname, 'node_modules/font-awesome')));
 app.use('/font-awesome-icons', express.static(path.join(__dirname, 'node_modules/font-awesome-icons')));
 app.use('/angular-ui', express.static(path.join(__dirname, 'node_modules/angular-ui--bootstrap')));
+app.use('/images', express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/logs', logs);
 app.use('/inventory', inventory);
+app.use('/about', about);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -16,7 +16,9 @@
 
             getVendors: getVendors,
 
-            addNewServer: addNewServer
+            addNewServer: addNewServer,
+
+            viewServer: viewServer
         };
 
         function getServers() {
@@ -52,6 +54,14 @@
                 url: '/newServer',
                 method: 'GET',
                 params: newServer
+            });
+        }
+
+        function viewServer(key) {
+            return $http({
+                url: '/allServerInfo',
+                method: 'GET',
+                params: {'device_key': key }
             });
         }
 

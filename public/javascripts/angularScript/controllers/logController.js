@@ -21,7 +21,7 @@
             logService.getAllLogs()
                 .then(function (logs) {
                     $scope.logs = logs.data;
-                    //getAllDates();
+                    getAllDates();
                 });
         }
 
