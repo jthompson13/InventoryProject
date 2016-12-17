@@ -9,7 +9,7 @@
                 <form id="dateForm" class="custom-select">
                     Select A Date:
                     <select ng-model="selectedDate" ng-change="filter()">
-                        <option ng-repeat="d in dates">{{d}}</option>
+                        <option ng-repeat="d in dates">{{d.date_checked}}</option>
                     </select>
                 </form>
                 <button class="btn btn-warning btn-sm" ng-click="clear()">Clear Filter</button>

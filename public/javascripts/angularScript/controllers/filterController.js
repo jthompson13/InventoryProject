@@ -35,12 +35,12 @@
 
         $scope.filter = function (fil) {
             $scope.searchFilter = fil;
-            $scope.apply();
+
         };
 
         $scope.filterStatus = function (stat) {
             $scope.statusFilter = stat;
-            $scope.apply();
+
         };
     }
 

@@ -27,17 +27,14 @@
 
         function getAllDates() {
             logService.getAllDates()
-                .success(function (dates) {
-                    $scope.dates = dates;
-
-                    //$scope.$apply();
+                .then(function (dates) {
+                    $scope.dates = dates.data;
                 });
         }
 
 
         $scope.filter = function () {
             //$scope.searchFilter = $scope.selectedDate;
-            //$scope.$apply();
         };
 
         $scope.clear = function () {
