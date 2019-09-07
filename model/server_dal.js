@@ -8,7 +8,7 @@ var db  = require('./db_connection.js');
 var connection = mysql.createConnection(db.config);
 
 exports.getAll = function(callback) {
-    var query = 'SELECT * FROM server;';
+    var query = 'SELECT * FROM Server;';
 
     connection.query(query, function(err, result) {
         callback(err, result);
@@ -16,7 +16,7 @@ exports.getAll = function(callback) {
 };
 
 exports.getCount = function(callback) {
-  var query = 'SELECT COUNT(*) as count FROM server';
+  var query = 'SELECT COUNT(*) as count FROM Server';
 
     connection.query(query, function (err, result) {
         callback(err, result);
@@ -33,7 +33,7 @@ exports.updateStatus = function (data, callback) {
 };
 
 exports.getServerInfo = function(server, callback) {
-    var query = 'SELECT * FROM server WHERE serial_number = ? ';
+    var query = 'SELECT * FROM Server WHERE serial_number = ? ';
     var queryData = [server];
 
     connection.query(query, queryData, function (err, result) {
@@ -73,7 +73,7 @@ exports.getAllServerInfo = function(device_key, callback) {
 };
 
 exports.deleteServer = function(device_key, callback){
-    var query =  'DELETE FROM server WHERE device_key = ? ';
+    var query =  'DELETE FROM Server WHERE device_key = ? ';
     var queryData = [device_key];
 
     connection.query(query, queryData, function (err, result) {
@@ -82,7 +82,7 @@ exports.deleteServer = function(device_key, callback){
 };
 
 exports.addServer = function(newServer, callback) {
-    var query = "INSERT INTO server (dns_name, serial_number, current_status, OS, date_deployed, vendor_id ) values( ?, ?, ?, ?, ?, ? )";
+    var query = "INSERT INTO Server (dns_name, serial_number, current_status, OS, date_deployed, vendor_id) values( ?, ?, ?, ?, ?, ? )";
 
     var queryData = [newServer.dns_name, newServer.serial_number, newServer.current_status, newServer.OS,
         newServer.date_deployed,
